@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<div class="banner w-full h-full max-h-[600px] flex flex-col items-start justify-center mb-10 p-35">
+    <h2 class=" text-5xl font-semibold">Exclusive collection<br>for your home office</h2>
+    <p-button class="pt-2" label="Explore now" icon="pi pi-search" iconPos="right" />
+</div>
+
+<div class="flex items-center justify-center">
+    <h2 class="text-4xl">Recomendations. Best matching products for you</h2>
+</div>
+<p-carousel [value]="products()" [numVisible]="3" [numScroll]="3" [circular]="false">
+    <ng-template let-product #item>
+        <div class="border border-surface rounded-border m-2 p-4">
+            <div class="mb-4">
+                <div class="relative mx-auto flex items-center justify-center">
+                    <img [src]="product.image" [alt]="product.name" class="w-40 h-40 rounded-border" />
+                </div>
+            </div>
+            <div class="mb-4 font-medium">{{ product.title }}</div>
+            <div class="flex justify-evenly items-center">
+                <div class="mt-0 font-semibold text-xl">{{ '$' + product.price }}</div>
+                <span>
+                    <p-button icon="pi pi-shopping-cart" styleClass="ml-2" (click)="addToCart(product)"/>
+                </span>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>

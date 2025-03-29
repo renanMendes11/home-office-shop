@@ -1,1 +1,13 @@
-<p>header works!</p>
+
+    <div class="w-full flex items-center justify-around p-2 fixed bg-white">
+        <h2 class="text-lg cursor-pointer">Home Office Shop</h2>
+        <div class="flex items-center">
+            <span class="pi pi-search absolute ml-2"></span>
+            <input type="text" pInputText placeholder="Search in products..." class="w-100 indent-5 placeholder:pl-[5px] X" />
+        </div>
+        <div class="flex items-center gap-4">
+            <i class="pi pi-user cursor-pointer" style="font-size:1.8rem"></i>
+            <i class="pi pi-shopping-cart cursor-pointer" style="font-size: 2.4rem"></i>
+            <span class="absolute ml-14 mb-9 text-gray-800 cursor-pointer font-bold">{{ sizeCart() }}</span>
+        </div>
+    </div>
