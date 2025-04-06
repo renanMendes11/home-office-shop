@@ -12,9 +12,33 @@
                     <ng-template #content let-activateCallback="activateCallback">
                         <div class="flex flex-col h-48">
                             <div
-                                class="border-2 border-solid rounded border-surface-200 flex-auto flex font-medium"
+                                class="border-2 border-solid rounded border-surface-200 flex-col flex font-medium"
                             >
                                 <h2 class="text-2xl p-10">Your cart</h2>
+                                <div class="flex w-full">
+                                    <div class="flex flex-col w-full">
+                                        @for (product of products; track product.id) {
+                                            <div class="p-5 flex">
+                                                <img class="w-20 h-20 mr-5" [src]="product.image" [alt]="product.title">
+                                                <div class="w-[60%]">
+                                                    <p>{{product.title}}</p>
+                                                    <p-select [options]="quantityItems" [(ngModel)]="selectedItem" placeholder="Select Item" [virtualScroll]="true" [virtualScrollItemSize]="38" class="w-full md:w-22 mr-2" />
+                                                    <p-button icon="pi pi-times" label="Remove" variant="text" severity="danger" />
+                                                </div>
+                                                <span>${{product.price}}</span>
+                                                
+                                            </div>
+                                        }
+                                    </div>
+                                    <p-card class="w-full h-full p-2">
+                                        <span class="flex justify-between items-center">
+                                            <p>Total</p>
+                                            <p>{{totalPrice}}</p>
+                                        </span>
+                                        <p-divider />
+
+                                    </p-card>
+                                </div>                              
                             </div>
                             <div class="flex pt-6 justify-end">
                                 <p-button label="Next" icon="pi pi-arrow-right" iconPos="right" (onClick)="activateCallback(2)" />

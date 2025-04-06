@@ -1,4 +1,4 @@
-import { Injectable, signal, WritableSignal } from '@angular/core';
+import { computed, Injectable, signal, WritableSignal } from '@angular/core';
 import { Product } from '../types/Product';
 
 @Injectable({
@@ -6,6 +6,9 @@ import { Product } from '../types/Product';
 })
 export class CartService {
   products: WritableSignal<Product[]> = signal<Product[]>([]);
+  totalPriceProducts = computed(() => {
+    this.products().reduce((acc, product)=> acc + product.price, 0);
+  });
 
   constructor() { }
 
